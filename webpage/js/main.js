@@ -296,6 +296,21 @@
     }; // end ssBackToTop
 
 
+ /* API JS visit counter
+    * ------------------------------------------------------ */
+const counter = document.querySelector(".counter-number");
+async function updateCounter(){
+    let response = await fetch ("https://5zn7i75fwl63662j2cb2b6slxy0zznwg.lambda-url.us-west-1.on.aws/");
+    let data = await response.json();
+    counter.innerHTML = `${data}`;
+}
+
+updateCounter();
+
+
+
+
+
 
    /* initialize
     * ------------------------------------------------------ */
