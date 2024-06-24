@@ -9,9 +9,11 @@ jobs:
   # upload website to s3
   copy-webpage-to-s3:
     runs-on: ubuntu-latest
-    steps:  
-    - name: upload to s3
+    steps: 
+    - name: checkout 
     - uses: actions/checkout@master
+
+    - name: upload to s3
     - uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl private --follow-symlinks --delete
@@ -21,6 +23,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-west-1'
         SOURCE_DIR: 'webpage'
+        
   # CF invalidation
   invalidate-CF-cached-distribution:
     needs: copy-webpage-to-s3
