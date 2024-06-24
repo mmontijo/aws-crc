@@ -26,7 +26,7 @@ jobs:
     needs: copy-webpage-to-s3
     runs-on: ubuntu-latest
     steps:
-      - name: cloudfront invalidationuses: 
+      - name: cloudfront invalidation
         uses: chetan/invalidate-cloudfront-action@v2
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
